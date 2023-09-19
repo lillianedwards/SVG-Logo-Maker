@@ -30,7 +30,12 @@ const questions = [
   }
 ]
 
-
+const testingQuestions = {
+  text: "LE",
+  textColor: "black",
+  shapeColor: "red",
+  shape: "Circle",
+};
 
 //Create a Function to Make a SVG File 
 const createSVG = (fileName, data) => {
@@ -42,9 +47,12 @@ const createSVG = (fileName, data) => {
 
 //Create a Function to Initialize App 
 const init = () => {
+  // createSVG("./output/logo.svg", testingQuestions);
   inquirer.prompt(questions).then((data) => {
     createSVG("./output/logo.svg", data);
   });
 }
 
 //Call Function to Initialize App 
+
+init();

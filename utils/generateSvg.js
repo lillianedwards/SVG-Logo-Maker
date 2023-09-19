@@ -1,44 +1,88 @@
-let shapeCode;
 
-//Create a Function to Generate Text
-//VALIDATION FOR # of CHARS
-const generateText = () => {};
-
-//Create a Function to to Generate Text Color
-const generateTextColor = () => {};
-
-//Create a Function to Generate Shape
-const generateShape = () => {
-  if (shape === "Circle") {
-    shapeCode = 'circle cx="150" cy="100" r="80"'
-  } else if (shape === "Triangle") {
-    shapeCode = 'polygon points ="100,30 200,200 0,200"'
-  } else if (shape === "Square") {
-    shapeCode = 'width="100%" height="100%"'
-  } else {
-    shapeCode = " "
+//Setting up Parent "Shape" Class to hold values that will remain the same in child classes
+class Shape {
+  constructor(text, textColor, shapeColor) {
+    this.text = text;
+    this.textColor = textColor;
+    this.shapeColor = shapeColor;
   }
 };
 
-//Create a Function to to Generate Shape's Color
-const generateShapeColor = () => {};
-
-// Create a Function to Generate Markdown for SVG Logo
-
-const generateSvg = ({text, textColor, shape, shapeColor}) => {
-    generateShape();
-  return `<svg
+class Circle extends Shape {
+  constructor(text, textColor, shapeColor) {
+    super(text, textColor, shapeColor)
+  }
+  getCircleTemplate () {
+  return`
+  <svg
     version="1.1"
     width="300"
     height="200"
-    xmlns="http://www.w3.org/2000/svg"
   >
-    <${shape} fill="${shapeColor}" />
+    <circle cx="150" cy="100" r="80" fill="${this.shapeColor}" />
 
-    <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">
-      ${text}
+    <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textColor}">
+      ${this.text}
     </text>
   </svg>`
-};
+}};
+
+
+
+class Square extends Shape {
+  constructor(text, textColor, shapeColor, shape) {
+    super(text, textColor, shapeColor)
+    this.shape = shape;
+  }
+  getSquareTemplate() {
+    return `<svg
+    version="1.1"
+    width="300"
+    height="200"
+  >
+    <rect width="100%" height="100%" fill="${this.shapeColor}" />
+
+    <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textColor}">
+      ${this.text}
+    </text>
+  </svg>`
+  }};
+
+  class Triangle extends Shape {
+    constructor(text, textColor, shapeColor, shape) {
+      super(text, textColor, shapeColor)
+      this.shape = shape;
+    }
+    getTriangleTemplate (){
+    return (`<svg
+    version="1.1"
+    width="300"
+    height="200"
+    >
+    <polygon points ="150,45 300,300 0,300" fill="${this.shapeColor}" />
+
+    <text x="150" y="175" font-size="60" text-anchor="middle" fill="${this.textColor}">
+      ${this.text}
+    </text>
+  </svg>`)
+    }};
+
+
+let genShape;
+generateSvg = () => {
+switch(Shape) {
+  case ("Triangle"):
+    genShape = new Triangle(text, textColor,shapeColor, shape);
+    break;
+  case ("Circle"):
+    genShape = new Circle(text, textColor, shapeColor, shape);
+    break;
+  case ("Square"):
+    genShape = new Square(text, textColor, shapeColor, shape);
+    break;
+}
+return genShape.render();
+}
+
 
 module.exports = generateSvg;
