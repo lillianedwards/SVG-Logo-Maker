@@ -30,13 +30,6 @@ const questions = [
   }
 ]
 
-const testingQuestions = {
-  text: "LE",
-  textColor: "black",
-  shapeColor: "red",
-  shape: "Circle",
-};
-
 //Create a Function to Make a SVG File 
 const createSVG = (fileName, data) => {
   const template = generateSvg(data);
