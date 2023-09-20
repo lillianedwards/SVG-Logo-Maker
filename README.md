@@ -17,8 +17,8 @@ The SVG-Logo-Maker command-line application was built to solve that problem for 
 To install the SVG Logo-Maker git clone the repository onto a local environment and run the command "npm i" in the terminal. Then run the command "node index.js" and answer the prompts as they appear in the terminal. If you have certain hexadecimal codes in mind for your logo, have them handy!  
 
 ## Usage 📸    
-![Screenshot of SVG-Logo-Maker](GOES HERE)
-[Screen Recording of SVG-Logo-Maker](Goes Here)
+![Screenshot of SVG-Logo-Maker](./media/SVG-Logo-Maker.png)
+[Screen Recording of SVG-Logo-Maker](https://drive.google.com/file/d/1c3rqet280xE_BdYyCnmSqSC3l02k02Q7/view)
 
 
 ## Credits 💳
